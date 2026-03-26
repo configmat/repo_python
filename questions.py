@@ -1,4 +1,6 @@
 import random
+import string
+letras_validas = string.ascii_lowercase
 words = [
     "python",
     "programa",
@@ -32,6 +34,9 @@ while attempts > 0:
     print(f"Intentos restantes: {attempts}")
     print(f"Letras usadas: {', '.join(guessed)}")
     letter = input("Ingresá una letra: ")
+    if len(letter) != 1 or letter not in letras_validas:
+            print("Entrada no valida")
+            continue 
     if letter in guessed:
         print("Ya usaste esa letra.")
     elif letter in word:
