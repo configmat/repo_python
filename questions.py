@@ -1,24 +1,28 @@
 import random
 import string
 letras_validas = string.ascii_lowercase
-words = [
-    "python",
-    "programa",
-    "variable",
-    "funcion",
-    "bucle",
-    "cadena",
-    "entero",
-    "lista",
-]
+categorias = {
+    "programacion": ["python", "programa", "variable", "funcion", "bucle"],
+    "datos": ["cadena", "entero", "lista"]
+}
 points = 0
-word = random.choice(words)
 guessed = []
 attempts = 6
 
 print("¡Bienvenido al Ahorcado!")
 print()
-
+print("Ingrese una categoria: ")
+print()
+for categoria in categorias:
+    print(f"  |{categoria}|", end=" ")
+print()
+###### eleccion de categoria y retry en caso de error 3
+eleccion = input()
+while eleccion not in categorias:
+    print("Categoria no valida. Intente de nuevo")
+    eleccion = input("Elegi una categoria: ")
+cat_elegida = categorias[eleccion]
+word = random.choice(cat_elegida)
 while attempts > 0:
     # Mostrar progreso: letras adivinadas y guiones para las que faltan
     progress = ""
